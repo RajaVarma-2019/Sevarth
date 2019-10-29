@@ -1,0 +1,119 @@
+<div class="body">
+<div class="container">
+  <!---heading---->
+      <header class="heading"> Registration-Form</header><hr>
+      <form #addressform="ngForm" (submit)="onFormSubmit(addressform)"></form>
+   <!---Form starting---->
+   <div class="row ">
+    <!--- For Name---->
+          <div class="col-sm-12">
+              <div class="row">
+            <div class="col-xs-4">
+              <label for="serviceName" *ngIf="flag1 === 0 ">Choose a service</label>
+              <label for="serviceName" style="color: red;" *ngIf="flag1 === 1" >Choose a service</label> </div>
+              <div class="col-xs-8">
+                <select #serviceName name="serviceName" class="form-control" id="serviceName" required ngModel>
+                  <option *ngFor="let ser of serviceNames" [value]="ser">{{ser}}</option>
+                </select>
+              </div>
+           </div>
+      </div>
+      <div [hidden]="serviceName.value != 'Pharamacy'" class=" alert alert-info" role="alert"><br>
+        Drugs can be bought as one strip only!<br>
+      </div>
+
+
+
+      <div [hidden]="serviceName.value != 'Pharamacy'"><br>
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-xs-4">
+            <label>Select the drug</label></div>
+       <div class ="col-xs-8">
+        <select ngModel name="drug" >
+          <option *ngFor="let drug of drugs" [value]="drug">
+            {{drug}}
+          </option>
+        </select>
+               </div>
+        </div>
+    </div></div>
+
+
+    <div [hidden]="serviceName.value != 'Cooking'" class=" alert alert-info" role="alert"><br>
+      Our team will contact you for dish and groceries details!<br>
+    </div>
+
+    <div [hidden]="serviceName.value != 'Cleaning'" ><br>
+          <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label>Select number of rooms : {{ rooms.value }}</label></div>
+         <div class ="col-xs-8">
+          <input type="range" class="custom-range" min="1" max="5" step="1" value="1" ngModel name="rooms" #rooms>
+                 </div>
+          </div>
+      </div></div>
+      <!-----For email---->
+      <div [hidden]="serviceName.value != 'Cooking'" ><br>
+      <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label>Select number of persons : {{ persons.value }}</label></div>
+            <div class="col-xs-8"	>
+              <input type="range" class="custom-range" min="1" max="5" step="1" value="1" ngModel name="persons" #persons>
+              </div>
+          </div>
+      </div></div>
+    <!-----For Password and confirm password---->
+    <div [hidden]="serviceName.value != 'Cooking'" >
+           <div class="col-sm-12">
+              <div class="row">
+                  <div class="custom-control custom-switch">
+              <div class="col-xs-4">
+                <label class="custom-control-label" for="switch1">Bring Sevarth groceries ?</label></div>
+           <div class="col-xs-8">
+            <input type="checkbox" class="custom-control-input" id="switch1" name="groceries" #groceries ngModel>
+          </div></div>
+           </div>
+       </div></div>
+
+
+
+       <div class="col-sm-12">
+          <div class="row">
+              <div class="custom-control custom-switch">
+          <div class="col-xs-4">
+              <label for="date" *ngIf="flag2 === 0 && flag4 === 0">Select date</label><br>
+              <label for="serviceName" style="color: red;" *ngIf="flag4 === 1" >Select date</label></div>
+       <div class="col-xs-8">
+          <div *ngIf="flag2===1 || flag4===1"><br></div>
+          <input type="date" #date  name="date" class="form-group" required ngModel>
+      </div></div>
+       </div>
+
+
+       <div class="col-sm-12">
+          <div class="row">
+              <div class="custom-control custom-switch">
+          <div class="col-xs-4">
+              <label for="time" *ngIf="flag3===0">Select time</label><br>
+              <label for="serviceName" style="color: red;" *ngIf="flag3 === 1" >Select time</label><div *ngIf="flag3===1"><br></div></div>
+       <div class="col-xs-8">
+          <input type="time" #time name="time" class="form-group" required ngModel>
+      </div></div>
+       </div>
+   </div>
+
+
+
+          <div class="col-sm-12">
+              <div style="text-align: center">
+                  <button class="button" [routerLink]="['/servicesfinal']"><span>Next</span></button></div>
+        </div>
+      </div>
+    </div>
+
+</div>
+ </div>
+

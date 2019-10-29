@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<!--
+<div class="progress" style="height: 10%;">
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50"
+    aria-valuemin="0" aria-valuemax="100" style="width:40%"><span style="color: black; font-weight: bold;">
+      50% Complete (success)</span>
+    </div>
+  </div>-->
+<div class="card" style="text-align: center; width: 40%; margin-left:30%; border-width: 5px;border-color: darkorchid ;border-style:dotted solid;">
+    <img class="card-img-top" [src]='"../assets/"+imgsrc' alt="Card image cap" style="height:200px;width:200px">
+    <div class="card-body">
+      <h5 class="card-title">Selected service : </h5>
+      <span class="card-text">{{ serviceName }}</span>
+      <span *ngIf="serviceName==='Pharamacy'" class="card-text">{{ '  :  '+drug }}</span>
+      <span *ngIf="serviceName==='Cleaning'" class="card-text">{{ '  :  '+rooms+'  rooms ' }}</span>
+      <span *ngIf="serviceName==='Cooking'" class="card-text">{{ '  :  '+ persons + '  person  '}}</span>
+      <span *ngIf="groceries" class="card-text">with sevarth groceries</span>
+      <br><hr>
+      <h5 class="card-title">Selected date : </h5>
+      <span class="card-text">{{ date }}</span>
+      <br><hr>
+      <h5 class="card-title">Selected time : </h5>
+      <span class="card-text">{{ time }}</span><br><hr>
+      <hr>
+    <h5><span class="card-title">{{'Amount : ' + payment }}</span></h5>
+      <hr>
+      <a href="#" class="btn btn-primary">Proceed to payment</a>
+    </div>
+  </div>
+<!--
+<p>{{ serviceName }}</p>
+<p>{{ time }}</p>
+<p>{{ date }}</p>
+-->
+<app-social></app-social>
+<app-footer></app-footer>

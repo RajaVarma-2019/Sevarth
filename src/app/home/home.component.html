@@ -1,0 +1,133 @@
+<app-navbar></app-navbar>
+
+<!--Image Slider-->
+<div id="slides" class="carousel silde" data-ride="carousel">
+<ul class="carousel-indicators">
+  <li data-target="#slides" data-slide-to="0" class="active"></li>
+  <li data-target="#slides" data-slide-to="1"></li>
+  <li data-target="#slides" data-slide-to="2"></li>
+</ul>
+<div class="carousel-inner">
+  <div class="carousel-item active">
+    <img src="assets/logo_2.jpeg" style="height:500px; width:100%">
+  </div>
+  <div class="carousel-item">
+    <img src="assets/home_1.jpg" style="height:500px; width:100%">
+  </div>
+  <div class="carousel-item">
+    <img src="assets/home_2.jpg" style="height:500px; width:100%">
+  </div>
+</div>
+<a class="carousel-control-prev" href="#slides" data-slide="prev">
+  <span class="carousel-control-prev-icon"></span>
+</a>
+<a class="carousel-control-next" href="#slides" data-slide="next">
+  <span class="carousel-control-next-icon"></span>
+</a>
+</div>
+
+<!--Jumbtron-->
+<div class="container-fluid">
+  <div class="row jumbotron">
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+      <p class="lead">We at Sevarth-serve on the go offer clean up and cooking services along with medication which is linked through an online pharmacy. One unique aspect of our start-up is, we provide post-hangover services too. We clean up the mess, cook a healthy, nutritious breakfast for our customers, right from buying thee groceries to serving it hot and ready. We also help them freshen up, provide them with buttermilk for hydration and a cure for headache if needed.</p>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+      <a href="#"><button type="button" class="bth btn-outline-secondary btn-lg">Create an account</button></a>
+    </div>
+  </div>
+</div>
+<!--Welcome section-->
+<div class="container-fluid padding">
+  <div class="row welcome text-center">
+    <div class="col-12">
+      <h1 class="display-4">Serve on the go</h1>
+    </div>
+    <hr>
+    <div class="col-12">
+      <p class="lead">To inspire healthier communities by connecting to real food</p>
+    </div>
+  </div>
+</div>
+<!--Three column section-->
+<div class="container-fluid padding">
+  <div class="row text-center padding">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <img src="assets/cook.jpg">
+      <h3>Cooking</h3>
+      <p>We cook healthy, nutritious food</p>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <img src="assets/cleaning_logo1.jpg">
+      <h3>Cleaning</h3>
+      <p>We offer clean-up services</p>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <img src="assets/phar.jpg">
+      <h3>Pharamacy</h3>
+      <p>We deliver medicines at your door-step</p>
+    </div>
+  </div>
+  <hr class="my-4">
+</div>
+<!--Two column section-->
+<div class="container-fluid padding">
+  <div class="row padding">
+    <div class="col-md-12 col-lg-6">
+      <h2>Serve on the go !!!</h2>
+      <p>We offer specialized services for different age groups based on their needs and demands i.e. cleaning, cooking and supplying medicines for aged.</p>
+      <p>The main objective of our team is to make hiring and booking services easy and affordable. We also hope that our platform will remove the stigma around being a maid</p>
+      <br>
+      <a href="#" class="btn btn-primary">Learn More</a>
+    </div>
+    <div class="col-lg-6">
+      <img src="assets/mopping.gif" class="img-fluid">
+    </div>
+  </div>
+</div>
+<hr class="my-4">
+<!--Fixed background-->
+<figure>
+  <div class="parallax">
+  </div>
+</figure>
+
+<!--Meet the team-->
+<div class="container-fluid padding">
+  <div class="row welcome text-center">
+    <div class="col-12">
+      <h1 class="display-4">Meet the Team</h1>
+    </div>
+    <hr>
+  </div>
+</div>
+
+<!--Cards-->
+<div class="container-fluid padding">
+  <div class="row padding">
+    <div class="col-md-4">
+      <div class="card">
+        <img class="card-img-top" src="assets/RV.JPG">
+        <div class="class-body" style="background-color: dimgray;">
+          <h4 class="card-title">Raja Varma</h4>
+          <p class="card-text">Raja Varma is a student at VIT and an just started enterpreneur.</p>
+          <a class="nav-link"  color="accent" mat-raised-button [routerLink]="['/team']">See Profile</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img class="card-img-top" src="assets/anand_pfp.jpeg" style="height: 310px">
+        <div class="class-body" style="background-color: dimgray;">
+          <h4 class="card-title">Ananda Mouli</h4>
+          <p class="card-text">Ananda Mouli is a student at VIT and an just started enterpreneur.</p>
+          <a class="nav-link"  color="accent" mat-raised-button [routerLink]="['/team']">See Profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-social></app-social>
+
+<app-footer></app-footer>

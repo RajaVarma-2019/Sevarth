@@ -1,0 +1,11 @@
+backgroung-image {
+  height: 20%;
+  width: 100%;
+}
+.my-card
+{
+    position:absolute;
+    left:40%;
+    top:-20px;
+    border-radius:50%;
+}

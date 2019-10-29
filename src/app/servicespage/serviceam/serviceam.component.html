@@ -1,0 +1,103 @@
+<app-navbar></app-navbar>
+
+
+<!-- <img src="../assets/mopping.gif" style="height:300px; width:300px;">-->
+
+<main>
+<div class="row">
+  <div class="col">
+<mat-card>
+<form #addressform="ngForm" (submit)="onFormSubmit(addressform)">
+<mat-form-field >
+  <mat-label>Choose a service</mat-label>
+  <mat-select #serviceeName required ngModel name="serviceName" >
+    <mat-option *ngFor="let ser of serviceNames" [value]="ser">
+      {{ser}}
+    </mat-option>
+  </mat-select>
+</mat-form-field><br>
+
+<div [hidden]="serviceeName.value != 'Pharamacy'" class="alert alert-info" role="alert">
+    Drugs can be bought as one strip only!
+  </div>
+<div [hidden]="serviceeName.value != 'Pharamacy'">
+<mat-form-field >
+    <mat-label>Select the drug</mat-label>
+    <mat-select ngModel name="drug" >
+      <mat-option *ngFor="let drug of drugs" [value]="drug">
+        {{drug}}
+      </mat-option>
+    </mat-select>
+    <!--<mat-error *ngIf="drugControl.invalid">{{ getDrugError() }}</mat-error>-->
+</mat-form-field><br>
+</div>
+
+<div [hidden]="serviceeName.value != 'Cooking'" class="alert alert-info" role="alert">
+    Our team will contact you for dish and groceries details!
+  </div>
+
+
+    <div [hidden]="serviceeName.value != 'Cleaning'"><br>
+              <mat-label>Select number of rooms : {{ rooms.value }}</mat-label> <br>
+              <mat-slider min="1" max="5" step="1" value="2" ngModel name="rooms" #rooms></mat-slider><br>
+    </div>
+
+    <div [hidden]="serviceeName.value != 'Cooking'"><br>
+            <mat-label>Select number of persons : {{ persons.value }}</mat-label><br>
+              <mat-slider min="1" max="5" step="1" value="10" ngModel name="persons" #persons></mat-slider><br><br>
+        <mat-slide-toggle ngModel name="groceries" #groceries>Bring Sevarth Groceries ?</mat-slide-toggle>
+    </div>
+
+
+<mat-form-field>
+  <input class="form-control" required name="date" matInput [matDatepicker]="picker" ngModel placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field><br>
+
+
+
+
+
+
+
+
+<mat-form-field >
+    <mat-label>Choose a time</mat-label>
+  <input class="form-control" required name="time" ngModel matInput type="time">
+</mat-form-field><br>
+
+
+
+<button mat-raised-button color="accent" type="submit">Next</button>
+</form>
+</mat-card>
+</div>
+</div>
+</main>
+<!--
+<form #addressform="ngForm" (submit)="onFormSubmit(addressform)">
+  <div class="form-group">
+    <label for="serviceName">Choose a service</label>
+    <select id="serviceName" class="form-control" required ngModel>
+      <option *ngFor="let drug of drugs" [value]="drug">{{drug}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="date">Select date</label>
+    <input type="date" id="date" class="form-group" required ngModel>
+  </div>
+
+  <div class="form-group">
+      <label for="time">Select time</label>
+      <input type="time" id="time" class="form-group" required ngModel>
+  </div>
+
+</form>
+-->
+
+
+
+<app-social></app-social>>
+<app-footer></app-footer>

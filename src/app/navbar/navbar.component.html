@@ -1,0 +1,31 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src = "assets/logo.jpg" style="height:50px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li [routerLinkActive]="['active']" class="nav-item">
+          <a class="nav-link" [routerLink]="['/home']">Home</a>
+        </li>
+        <li [routerLinkActive]="['active']" class="nav-item">
+          <a class="nav-link" [routerLink]="['/about']">About</a>
+        </li>
+        <li [routerLinkActive]="['active']" class="nav-item">
+          <a class="nav-link" [routerLink]="['/servicehome']">Services</a>
+        </li>
+        <li [routerLinkActive]="['active']" class="nav-item">
+          <a class="nav-link" [routerLink]="['/team']">Team</a>
+        </li>
+        <li [routerLinkActive]="['active']" class="nav-item">
+          <a class="nav-link" [routerLink]="['/connect']">Contact us</a>
+        </li>
+        <li [routerLinkActive]="['active']" class="nav-item">
+          <a class="nav-link" [routerLink]="['/orders']">My Orders</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

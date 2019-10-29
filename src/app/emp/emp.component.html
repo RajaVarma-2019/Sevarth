@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src = "assets/logo.jpg" style="height:50px"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li [routerLinkActive]="['active']" class="nav-item">
+            <a class="nav-link" [routerLink]="['/admin']">Orders</a>
+          </li>
+          <li [routerLinkActive]="['active']" class="nav-item">
+            <a class="nav-link" [routerLink]="['/addEmp']">Add Employee</a>
+          </li>
+          <li [routerLinkActive]="['active']" class="nav-item">
+            <a class="nav-link" [routerLink]="['/employees']">Employees</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<main class="team-section text-center my-5">
+    <h2 class="h1-responsive font-weight-bold my-5" *ngIf="emp.length > 0">Employees</h2>
+    <h2 class="h1-responsive font-weight-bold my-5" *ngIf="emp.length === 0">No Employees</h2>
+<mat-tab-group>
+  <mat-tab label="All">
+<mat-accordion multi="true" *ngIf="emp.length > 0">
+  <mat-expansion-panel *ngFor="let employee of emp">
+    <mat-expansion-panel-header>
+        {{employee.empName}}
+    </mat-expansion-panel-header>
+    <p>Age : {{employee.empAge}}</p>
+    <p *ngIf="employee.empGender===1">Gender : Male</p>
+    <p *ngIf="!employee.empGender">Gender : Female</p>
+    <p><strong>Capabilities : </strong><span *ngIf="employee.empCook === 1">Cooking   </span><span *ngIf="employee.empClean === 1">Cleaning   </span><span *ngIf="employee.empPhar === 1">Pharamacy   </span></p>
+  </mat-expansion-panel>
+</mat-accordion>
+</mat-tab>
+
+<mat-tab label="Cooking">
+    <mat-accordion multi="true" *ngIf="emp.length > 0">
+      <mat-expansion-panel *ngFor="let employee of emp">
+        <mat-expansion-panel-header *ngIf="employee.empCook === 1">
+            {{employee.empName}}
+        </mat-expansion-panel-header>
+        <p *ngIf="employee.empCook === 1">Age : {{employee.empAge}}</p>
+        <p *ngIf="employee.empGender===1 && employee.empCook === 1">Gender : Male</p>
+        <p *ngIf="employee.empGender===0 && employee.empCook === 1">Gender : Female</p>
+        <p *ngIf="employee.empCook === 1"><strong>Capabilities : </strong><span *ngIf="employee.empCook === 1">Cooking   </span><span *ngIf="employee.empClean === 1">Cleaning   </span><span *ngIf="employee.empPhar === 1">Pharamacy   </span></p>
+      </mat-expansion-panel>
+    </mat-accordion>
+    </mat-tab>
+
+    <mat-tab label="Pharamacy">
+        <mat-accordion multi="true" *ngIf="emp.length > 0">
+          <mat-expansion-panel *ngFor="let employee of emp">
+            <mat-expansion-panel-header *ngIf="employee.empPhar === 1">
+                {{employee.empName}}
+            </mat-expansion-panel-header>
+            <p *ngIf="employee.empPhar === 1">Age : {{employee.empAge}}</p>
+            <p *ngIf="employee.empGender===1 && employee.empPhar === 1">Gender : Male</p>
+            <p *ngIf="employee.empGender===0 && employee.empPhar === 1">Gender : Female</p>
+            <p *ngIf="employee.empPhar === 1"><strong>Capabilities : </strong><span *ngIf="employee.empCook === 1">Cooking   </span><span *ngIf="employee.empClean === 1">Cleaning   </span><span *ngIf="employee.empPhar === 1">Pharamacy   </span></p>
+          </mat-expansion-panel>
+        </mat-accordion>
+        </mat-tab>
+
+        <mat-tab label="Cleaning">
+            <mat-accordion multi="true" *ngIf="emp.length > 0">
+              <mat-expansion-panel *ngFor="let employee of emp">
+                <mat-expansion-panel-header *ngIf="employee.empClean === 1">
+                    {{employee.empName}}
+                </mat-expansion-panel-header>
+                <p *ngIf="employee.empClean === 1">Age : {{employee.empAge}}</p>
+                <p *ngIf="employee.empGender===1 && employee.empClean === 1">Gender : Male</p>
+                <p *ngIf="employee.empGender===0 && employee.empClean === 1">Gender : Female</p>
+                <p *ngIf="employee.empClean === 1"><strong>Capabilities : </strong><span *ngIf="employee.empCook === 1">Cooking   </span><span *ngIf="employee.empClean === 1">Cleaning   </span><span *ngIf="employee.empPhar === 1">Pharamacy   </span></p>
+              </mat-expansion-panel>
+            </mat-accordion>
+            </mat-tab>
+
+
+</mat-tab-group>
+</main>

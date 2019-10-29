@@ -1,0 +1,111 @@
+:host {
+  display: block;
+}
+
+img {
+  align-content: center;
+}
+
+.info-text {
+  text-align: center;
+}
+
+#over img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+main {
+  display:block;
+  margin: 10rem;
+  width:80%;
+  text-align: center;
+}
+
+mat-form-field {
+  width:20%;
+  margin-top:5rem;
+}
+
+mat-card {
+  border-width: 5px;
+  border-color: darkorchid ;
+  border-style:dotted solid;
+}
+
+
+main {
+  width: 80%;
+  margin: 1rem auto;
+}
+
+.custom-badge .mat-badge-content {
+  width: fit-content;
+  text-align: center;
+  border-radius: 7px;
+  left: 13px;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
+
+
+.button {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}

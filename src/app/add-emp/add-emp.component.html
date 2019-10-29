@@ -1,0 +1,54 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src = "assets/logo.jpg" style="height:50px"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li [routerLinkActive]="['active']" class="nav-item">
+            <a class="nav-link" [routerLink]="['/admin']">Orders</a>
+          </li>
+          <li [routerLinkActive]="['active']" class="nav-item">
+            <a class="nav-link" [routerLink]="['/addEmp']">Add Employee</a>
+          </li>
+          <li [routerLinkActive]="['active']" class="nav-item">
+            <a class="nav-link" [routerLink]="['/employees']">Employees</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<main>
+    <div class="row">
+      <div class="col">
+    <mat-card>
+    <form #empform="ngForm" (submit)="addEmp(empform)" >
+
+    <mat-form-field>
+      <mat-label>Employee Name</mat-label>
+      <input matInput name="empName" #empName ngModel>
+    </mat-form-field><br><br><br>
+
+        <mat-label>Employee Age : {{empAge.value}}</mat-label><br>
+        <mat-slider min="18" max="50" step="1" value="1" ngModel name="empAge" #empAge></mat-slider><br><br><br>
+
+
+
+        Female<mat-slide-toggle ngModel name="empGender" #empGender>Male</mat-slide-toggle><br><br><br>
+
+        <mat-checkbox ngModel name="empCook" #empCook>Cooking ?</mat-checkbox>&nbsp;&nbsp;
+        <mat-checkbox ngModel name="empClean" #empCook>Cleaning ?</mat-checkbox>&nbsp;&nbsp;
+        <mat-checkbox ngModel name="empPhar" #empCook>Pharamacy ?</mat-checkbox><br><br><br>
+
+
+
+    <button mat-raised-button color="accent" type="submit">Add</button>
+    </form>
+    </mat-card>
+    </div>
+    </div>
+    </main>

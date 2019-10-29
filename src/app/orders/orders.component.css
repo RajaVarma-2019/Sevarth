@@ -1,0 +1,11 @@
+main {
+  width: 80%;
+  margin: 1rem auto;
+}
+
+.custom-badge .mat-badge-content {
+  width: fit-content;
+  text-align: center;
+  border-radius: 7px;
+  left: 13px;
+}

@@ -1,0 +1,158 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src = "assets/logo.jpg" style="height:50px"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li [routerLinkActive]="['active']" class="nav-item">
+            <a class="nav-link" [routerLink]="['/admin']">Orders</a>
+          </li>
+          <li [routerLinkActive]="['active']" class="nav-item">
+            <a class="nav-link" [routerLink]="['/addEmp']">Add Employee</a>
+          </li>
+          <li [routerLinkActive]="['active']" class="nav-item">
+            <a class="nav-link" [routerLink]="['/employees']">Employees</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<main class="team-section text-center my-5">
+    <h2 class="h1-responsive font-weight-bold my-5" *ngIf="orders.length > 0">All orders</h2>
+    <h2 class="h1-responsive font-weight-bold my-5" *ngIf="orders.length === 0">No orders</h2>
+<mat-tab-group>
+  <mat-tab label="All">
+<div style="text-align: right">
+      <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" #date ngModel id="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+</div>
+<div [hidden]="date.value">
+<mat-accordion multi="true" *ngIf="orders.length > 0">
+  <mat-expansion-panel *ngFor="let order of orders">
+    <mat-expansion-panel-header>
+        {{order.serviceName}} - {{order.date | date}} - {{order.time}}
+    </mat-expansion-panel-header>
+    <p>Service : {{order.serviceName}}</p>
+    <p>Date : {{order.date | date}}</p>
+    <p>TIme: {{order.time}}</p>
+    <p *ngIf = "order.serviceName === 'Cleaning'">Rooms: {{order.rooms}}</p>
+    <p *ngIf = "order.serviceName === 'Cooking'">Persons: {{order.persons}}</p>
+    <p *ngIf = "order.serviceName === 'Pharamacy'">Drug: {{order.drug}}</p>
+    <p *ngIf = "order.groceries">Groceries by Sevarth</p>
+    <p>Status: {{order.status}}</p>
+  </mat-expansion-panel>
+</mat-accordion>
+</div>
+
+<div [hidden]="!date.value">
+    <mat-accordion multi="true" *ngIf="orders.length > 0">
+      <mat-expansion-panel *ngFor="let order of orders">
+        <mat-expansion-panel-header *ngIf="order.date === date.value">
+            {{order.serviceName}} - {{order.date | date}} - {{order.time}}
+        </mat-expansion-panel-header>
+        <p *ngIf="order.date === date.value">Service : {{order.serviceName}}</p>
+        <p *ngIf="order.date === date.value">Date : {{order.date | date}}</p>
+        <p *ngIf="order.date === date.value">TIme: {{order.time}}</p>
+        <p *ngIf = "order.serviceName === 'Cleaning' && order.date === date.value">Rooms: {{order.rooms}}</p>
+        <p *ngIf = "order.serviceName === 'Cooking' && order.date === date.value">Persons: {{order.persons}}</p>
+        <p *ngIf = "order.serviceName === 'Pharamacy' && order.date === date.value">Drug: {{order.drug}}</p>
+        <p *ngIf = "order.groceries && order.date === date.value">Groceries by Sevarth</p>
+        <p *ngIf="order.date === date.value">Status: {{order.status}}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+    </div>
+
+</mat-tab>
+
+<mat-tab label="Pending">
+    <mat-accordion multi="true" *ngIf="orders.length > 0">
+      <mat-expansion-panel *ngFor="let order of orders">
+        <mat-expansion-panel-header *ngIf="order.status === 'Pending'">
+            {{order.serviceName}} - {{order.date | date}} - {{order.time}}
+        </mat-expansion-panel-header>
+        <p *ngIf="order.status === 'Pending'">Service : {{order.serviceName}}</p>
+        <p *ngIf="order.status === 'Pending'">Date : {{order.date | date}}</p>
+        <p *ngIf="order.status === 'Pending'">TIme: {{order.time}}</p>
+        <p *ngIf = "order.serviceName === 'Cleaning' && order.status === 'Pending'">Rooms: {{order.rooms}}</p>
+        <p *ngIf = "order.serviceName === 'Cooking' && order.status === 'Pending'">Persons: {{order.persons}}</p>
+        <p *ngIf = "order.serviceName === 'Pharamacy' && order.status === 'Pending'">Drug: {{order.drug}}</p>
+        <p *ngIf = "order.groceries && order.status === 'Pending'">Groceries by Sevarth</p>
+        <p *ngIf="order.status === 'Pending'">Status: {{order.status}}</p>
+        <mat-action-row>
+            <mat-form-field>
+                <mat-label>Select Employee</mat-label>
+                <mat-select name="employeeId" #employeeId>
+                  <ng-container *ngFor="let employee of emp">
+                  <mat-option *ngIf="!employee.status && ((order.serviceName === 'Cooking' && employee.empCook===1) || (order.serviceName === 'Cleaning' && employee.empClean===1) || (order.serviceName === 'Pharamacy' && employee.empPhar===1) )" [value]="employee._id">
+                    {{employee.empName}} - {{employee.empAge}}
+                  </mat-option></ng-container>
+                </mat-select>
+              </mat-form-field>
+            <button mat-button color="primary" (click)="updateStatus(order._id, employeeId.value )">Confirm</button>
+            <button mat-button color="warn" (click)="cancelOrder(order._id)">Cancel</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+
+    </mat-tab>
+
+    <mat-tab label="Confirmed">
+        <mat-accordion multi="true" *ngIf="orders.length > 0">
+          <mat-expansion-panel *ngFor="let order of orders">
+            <mat-expansion-panel-header *ngIf="order.status === 'Confirmed'">
+                {{order.serviceName}} - {{order.date | date}} - {{order.time}}
+            </mat-expansion-panel-header>
+            <div class="row">
+            <div class="col-6">
+            <p *ngIf="order.status === 'Confirmed'">Service : {{order.serviceName}}</p>
+            <p *ngIf="order.status === 'Confirmed'">Date : {{order.date | date}}</p>
+            <p *ngIf="order.status === 'Confirmed'">TIme: {{order.time}}</p>
+            <p *ngIf = "order.serviceName === 'Cleaning' && order.status === 'Confirmed'">Rooms: {{order.rooms}}</p>
+            <p *ngIf = "order.serviceName === 'Cooking' && order.status === 'Confirmed'">Persons: {{order.persons}}</p>
+            <p *ngIf = "order.serviceName === 'Pharamacy' && order.status === 'Confirmed'">Drug: {{order.drug}}</p>
+            <p *ngIf = "order.groceries && order.status === 'Confirmed'">Groceries by Sevarth</p>
+            <p *ngIf="order.status === 'Confirmed'">Status: {{order.status}}</p>
+            </div>
+            <div class="col-6">
+                <p *ngIf="order.status === 'Confirmed'">Employee Name : {{getEmployeeName(order.empId)}}</p>
+                <p *ngIf="order.status === 'Confirmed'">Employee Age : {{getEmployeeAge(order.empId)}}</p>
+                <p *ngIf="order.status === 'Confirmed'">Employee Gender : {{getEmployeeGender(order.empId)}}</p>
+              </div>
+            </div>
+            <mat-action-row>
+                <button mat-button color="warn" (click)="cancelOrderAfterConfirm(order._id)">Cancel</button>
+            </mat-action-row>
+          </mat-expansion-panel>
+        </mat-accordion>
+        </mat-tab>
+
+        <mat-tab label="Cancelled">
+            <mat-accordion multi="true" *ngIf="orders.length > 0">
+              <mat-expansion-panel *ngFor="let order of orders">
+                <mat-expansion-panel-header *ngIf="order.status === 'Cancelled'">
+                    {{order.serviceName}} - {{order.date | date}} - {{order.time}}
+                </mat-expansion-panel-header>
+                <p *ngIf="order.status === 'Cancelled'">Service : {{order.serviceName}}</p>
+                <p *ngIf="order.status === 'Cancelled'">Date : {{order.date | date}}</p>
+                <p *ngIf="order.status === 'Cancelled'">TIme: {{order.time}}</p>
+                <p *ngIf = "order.serviceName === 'Cleaning' && order.status === 'Cancelled'">Rooms: {{order.rooms}}</p>
+                <p *ngIf = "order.serviceName === 'Cooking' && order.status === 'Cancelled'">Persons: {{order.persons}}</p>
+                <p *ngIf = "order.serviceName === 'Pharamacy' && order.status === 'Cancelled'">Drug: {{order.drug}}</p>
+                <p *ngIf = "order.groceries && order.status === 'Cancelled'">Groceries by Sevarth</p>
+                <p *ngIf="order.status === 'Cancelled'">Status: {{order.status}}</p>
+              </mat-expansion-panel>
+            </mat-accordion>
+            </mat-tab>
+
+</mat-tab-group>
+</main>
